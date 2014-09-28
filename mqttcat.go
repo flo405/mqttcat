@@ -48,6 +48,7 @@ func main() {
     panic(startError)
   }
 
+  //subscribe to topic list
   for _, topic := range topicsList {
     _, err = c.StartSubscription(nil, &topic)
     if err != nil{
@@ -65,7 +66,7 @@ func main() {
      }
     message, err := GetMessage(strings.TrimSuffix(text, "\n"))
     if err == nil {
-      c.Publish(MQTT.QOS_ONE, message.topic, message.data)
+      c.Publish(message.qos, message.topic, message.data)
     }
   }
 
