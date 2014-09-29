@@ -1,5 +1,4 @@
-package mqttcat
-
+package main
 
 import (
   "regexp"
@@ -7,6 +6,8 @@ import (
   "errors"
   MQTT "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
 )
+
+
 //Create a message from a string by parsing
 func GetMessage(mess string) (*Message, error) {
   re := regexp.MustCompile(`(.*:[0|1|2]):(.*)`)

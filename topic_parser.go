@@ -1,5 +1,4 @@
-package mqttcat
-
+package main
 import (
   MQTT "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
   "regexp"
@@ -40,6 +39,7 @@ func GetTopic(data string) (topic string, qos MQTT.QoS, err error){
   return "",MQTT.QOS_ZERO, errors.New("Invalid topic : "+data)
 
 }
+//Extract a QOS from car
 func getQOS(qos int) (MQTT.QoS, error){
   switch qos {
     case 0: return  MQTT.QOS_ZERO, nil
