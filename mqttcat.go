@@ -15,7 +15,11 @@ var f MQTT.MessageHandler = func(client *MQTT.MqttClient, msg MQTT.Message) {
 }
 
 
+var c MQTT.OnConnectionLost = func(client *MQTT.MqttClient, reason error){
+  fmt.Printf("Error : Connection lost\n")
+  os.Exit(0)
 
+}
 // mqttcat --id=test --topics:/topic/a:0,/topic/b:1 --protocol=tcp localhost 1883
 var (
   app = kingpin.New("mqttcat", "A netcat for mqtt.")
@@ -44,6 +48,7 @@ func main() {
   opts.SetDefaultPublishHandler(f)
   opts.SetCleanSession(*cleanSession)
   opts.SetKeepAlive(uint(*keepAlive))
+  opts.SetOnConnectionLost(c)
 
   if *username != ""{
     opts.SetUsername(*username)
