@@ -61,14 +61,15 @@ func main() {
   c := MQTT.NewClient(opts)
   _, startError := c.Start()
   if startError != nil {
-    panic(startError)
+    fmt.Printf("Error : cannot connect to %s:%s\n", *host, *port)
+    os.Exit(1)
   }
 
   //subscribe to topic list
   for _, topic := range topicsList {
     _, err = c.StartSubscription(f, &topic)
     if err != nil{
-      panic(err)
+      fmt.Printf("Error : Cannot subscribe to %s", topic)
     }
   }
 
