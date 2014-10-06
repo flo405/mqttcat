@@ -28,7 +28,7 @@ func GetMessage(mess string) (*Message, error) {
     }
     return p, nil
   }
-  return nil, errors.New("Error : cannot parse message : "+ mess)
+  return nil, errors.New("Error : invalid message")
 }
 
 //message definition

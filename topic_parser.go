@@ -11,12 +11,18 @@ import (
 //input example : a:1,b:0,c:2
 func GetTopics(topics string) ([]MQTT.TopicFilter, error){
   topicsList := strings.Split(topics, ",")
+
   var result []MQTT.TopicFilter
+  if len(topicsList) == 0 {
+    return nil, errors.New("Error : invalid topics list")
+  }
   for _,topicAndQos := range topicsList {
     topic, qos, err := GetTopic(topicAndQos)
     if(err == nil){
       filter, _ := MQTT.NewTopicFilter(topic, byte(qos))
       result = append(result, *filter)
+    } else {
+      return nil, errors.New("Error : invalid topic, cannot parse list")
     }
   }
   return result, nil
@@ -33,18 +39,18 @@ func GetTopic(data string) (topic string, qos MQTT.QoS, err error){
     if err != nil || qos > 2{
       qos = 0
     }
-    qos, err = getQOS(qosInt)
+    qos, err = GetQOS(qosInt)
     return topic, qos, nil
   }
-  return "",MQTT.QOS_ZERO, errors.New("Invalid topic : "+data)
+  return "",MQTT.QOS_ZERO, errors.New("Error : invalid topic")
 
 }
 //Extract a QOS from car
-func getQOS(qos int) (MQTT.QoS, error){
+func GetQOS(qos int) (MQTT.QoS, error){
   switch qos {
     case 0: return  MQTT.QOS_ZERO, nil
     case 1: return MQTT.QOS_ONE, nil
     case 2: return MQTT.QOS_TWO, nil
-    default: return MQTT.QOS_ZERO, errors.New("Invalid qos")
+    default: return MQTT.QOS_ZERO, errors.New("Error : invalid qos")
   }
 }
