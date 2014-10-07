@@ -35,11 +35,11 @@ Args:
 
 #Usage
 
-Cat a file
+##Cat a file
 
 cat data.dat |  mqttcat localhost 1883
 
-Read from stdin
+##Read from stdin
 
 ~~~bash
 ./mqttcat localhost 1883 << EOF
