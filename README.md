@@ -7,6 +7,10 @@ go get
 go build
 ~~~
 
+# Credits
+
+- MQTTcat is using [paho](http://www.eclipse.org/paho/clients/golang/)
+
 # Feature
 
 Mqttcat sends to mqtt broker formatted input from stdin
