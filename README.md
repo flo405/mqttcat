@@ -1,3 +1,5 @@
+![Travis build](https://travis-ci.org/guillaumebreton/mqttcat.svg?branch=master)
+
 # Install
 
 The app is not available in any package manager.
