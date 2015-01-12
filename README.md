@@ -1,5 +1,4 @@
-![Travis build](https://travis-ci.org/guillaumebreton/mqttcat.svg?branch=master)
-
+[![Circle CI](https://circleci.com/gh/guillaumebreton/mqttcat.svg?style=svg)](https://circleci.com/gh/guillaumebreton/mqttcat)
 # Install
 
 The app is not available in any package manager.
