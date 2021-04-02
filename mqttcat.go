@@ -2,7 +2,7 @@ package main
 
 import (
   "fmt"
-  MQTT "git.eclipse.org/gitroot/paho/org.eclipse.paho.mqtt.golang.git"
+  MQTT "github.com/eclipse/paho.mqtt.golang"
   "os"
   "bufio"
   "strings"
